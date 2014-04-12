@@ -18,6 +18,7 @@ public class EPSWebViewFragment extends Fragment {
 
     @InjectView(R.id.webView)
     WebView webView;
+    Boolean isWebViewAvailable;
 
     public EPSWebViewFragment() {
     }
@@ -25,6 +26,9 @@ public class EPSWebViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (webView != null) {
+            webView.destroy();
+        }
         View rootView = inflater.inflate(R.layout.web_fragment, container, false);
         ButterKnife.inject(this, rootView);
         WebSettings settings = webView.getSettings();
@@ -33,6 +37,46 @@ public class EPSWebViewFragment extends Fragment {
         webView.loadUrl("http://hospinet.epsmedica.com");
         CookieManager.getInstance().setAcceptCookie(true);
         return rootView;
+    }
+
+    /**
+     * Called when the fragment is visible to the user and actively running. Resumes the WebView.
+     */
+    @Override
+    public void onPause() {
+        super.onPause();
+        webView.onPause();
+    }
+
+    /**
+     * Called when the fragment is no longer resumed. Pauses the WebView.
+     */
+    @Override
+    public void onResume() {
+        webView.onResume();
+        super.onResume();
+    }
+
+    /**
+     * Called when the WebView has been detached from the fragment.
+     * The WebView is no longer available after this time.
+     */
+    @Override
+    public void onDestroyView() {
+        isWebViewAvailable = false;
+        super.onDestroyView();
+    }
+
+    /**
+     * Called when the fragment is no longer in use. Destroys the internal state of the WebView.
+     */
+    @Override
+    public void onDestroy() {
+        if (webView != null) {
+            webView.destroy();
+            webView = null;
+        }
+        super.onDestroy();
     }
 
     public boolean canGoBack() {

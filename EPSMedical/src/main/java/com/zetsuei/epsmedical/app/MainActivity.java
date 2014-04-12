@@ -43,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag("webview");
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof EPSWebViewFragment) {
             EPSWebViewFragment webViewFragment = (EPSWebViewFragment)fragment;
             if(webViewFragment.canGoBack()){
