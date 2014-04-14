@@ -88,4 +88,8 @@ public class EPSWebViewFragment extends Fragment {
             webView.goBack();
         }
     }
+
+    public WebView getWebView() {
+        return webView;
+    }
 }
