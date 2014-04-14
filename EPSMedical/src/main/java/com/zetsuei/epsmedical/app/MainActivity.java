@@ -5,13 +5,16 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.startapp.android.publish.StartAppAd;
 
 
 public class MainActivity extends ActionBarActivity {
+    private StartAppAd startAppAd = new StartAppAd(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StartAppAd.init(this, "104136153", "204173836");
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -42,6 +45,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        startAppAd.onResume();
+    }
+
+    @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof EPSWebViewFragment) {
@@ -50,11 +59,19 @@ public class MainActivity extends ActionBarActivity {
                 webViewFragment.goBack();
             }
             else {
+                startAppAd.onBackPressed();
                 super.onBackPressed();
             }
         }
         else {
+            startAppAd.onBackPressed();
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        startAppAd.onPause();
     }
 }
