@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.startapp.android.publish.StartAppAd;
 
 
@@ -60,6 +61,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
+
+    @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof EPSWebViewFragment) {
@@ -82,5 +89,11 @@ public class MainActivity extends ActionBarActivity {
     public void onPause() {
         super.onPause();
         startAppAd.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 }

@@ -32,3 +32,15 @@
 -keepnames class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+-keepnames class * { @butterknife.InjectView *;}
+
+-keep class com.startapp.** {
+      *;
+}
+
+-keepattributes Exceptions, InnerClasses, Signature, Deprecated, SourceFile,
+LineNumberTable, *Annotation*, EnclosingMethod
+-dontwarn android.webkit.JavascriptInterface
+-dontwarn com.startapp.**
