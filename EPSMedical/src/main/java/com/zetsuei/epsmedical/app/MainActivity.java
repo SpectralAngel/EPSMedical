@@ -1,5 +1,7 @@
 package com.zetsuei.epsmedical.app;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -42,6 +44,11 @@ public class MainActivity extends ActionBarActivity {
         switch (id) {
             case R.id.action_settings:
                 return true;
+            case R.id.action_help:
+                String url = "http://casahospitalaria.com/mibew/client.php?locale=es";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             case R.id.action_refresh:
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
                 if(fragment instanceof EPSWebViewFragment)

@@ -11,6 +11,11 @@
           android:icon="@drawable/ic_refresh"
           app:showAsAction="withText|ifRoom" />
 
+    <item android:id="@+id/action_help"
+          android:title="@string/action_help"
+          android:orderInCategory="100"
+          app:showAsAction="withText|ifRoom" />
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
