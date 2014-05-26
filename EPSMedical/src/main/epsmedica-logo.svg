@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48+devel r13012"
+   viewBox="0 0 512 512.00001"
+   sodipodi:docname="epsmedica-logo.svg"
+   inkscape:export-filename="C:\Users\Carlos\Desktop\EPSMedical.png"
+   inkscape:export-xdpi="89.942612"
+   inkscape:export-ydpi="89.942612">
+  <defs
+     id="defs4">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter4358">
+      <feFlood
+         flood-opacity="0.0431373"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4360" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4362" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0"
+         result="blur"
+         id="feGaussianBlur4364" />
+      <feOffset
+         dx="3"
+         dy="3"
+         result="offset"
+         id="feOffset4366" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4368" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="323.01133"
+     inkscape:cy="276.9251"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="false"
+     borderlayer="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-540.36219)">
+    <g
+       id="g4160"
+       transform="matrix(3.2274975,0,0,3.2274975,-374.42546,-705.41194)"
+       inkscape:export-filename="C:\Users\Carlos\Desktop\EPSMedical.png"
+       inkscape:export-xdpi="89.942612"
+       inkscape:export-ydpi="89.942612"
+       style="filter:url(#filter4358)">
+      <rect
+         ry="2"
+         rx="2"
+         y="401.73636"
+         x="133.39661"
+         height="54.285629"
+         width="52.857174"
+         id="rect4100"
+         style="fill:#00abc7;fill-opacity:1;fill-rule:nonzero;stroke:#00abc7;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path4153"
+         d="M 173.49653,525.58887 133.7388,485.66799 c -7.35911,-7.3591 -6.04805,-13.30659 6.45341,-13.30659 l 38.50889,-0.008 c 7.50107,0 7.95665,3.59455 7.95665,8.57682 l 0.28906,37.53748 c 0.71429,13.86928 -6.29726,15.00928 -13.45028,7.12117 z"
+         inkscape:transform-center-y="-1.1994185"
+         inkscape:transform-center-x="2.9865698"
+         style="fill:#00abc7;fill-opacity:1;stroke:none" />
+      <path
+         style="fill:#00abc7;fill-opacity:1;stroke:none"
+         inkscape:transform-center-x="-2.9865701"
+         inkscape:transform-center-y="1.1994195"
+         d="m 216.97761,405.02324 39.75773,39.92088 c 7.35911,7.3591 6.04805,13.30659 -6.45341,13.30659 l -38.50889,0.008 c -7.50107,0 -7.95665,-3.59455 -7.95665,-8.57682 l -0.28906,-37.53748 c -0.71429,-13.86928 6.29726,-15.00928 13.45028,-7.12117 z"
+         id="path4156"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <rect
+         style="fill:#93d509;fill-opacity:1;stroke:none"
+         id="rect4158"
+         width="57.552692"
+         height="57.91832"
+         x="203.87549"
+         y="472.40689"
+         rx="7.0892859"
+         ry="7.0892859" />
+    </g>
+  </g>
+</svg>
