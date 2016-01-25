@@ -2,34 +2,39 @@ package com.zetsuei.epsmedical.app;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.startapp.android.publish.StartAppAd;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
-public class MainActivity extends ActionBarActivity {
-    private StartAppAd startAppAd = new StartAppAd(this);
+public class MainActivity extends AppCompatActivity {
+    EPSWebViewFragment webViewFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppAd.init(this, "104136153", "204173836");
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
+            webViewFragment = new EPSWebViewFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new EPSWebViewFragment())
+                    .add(R.id.container, webViewFragment)
                     .commit();
         }
-    }
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("BF95FAC47662E2AE0380508754BDCEEA")
+                .build();
+        mAdView.loadAd(adRequest);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -51,9 +56,8 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(i);
             case R.id.action_refresh:
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-                if(fragment instanceof EPSWebViewFragment)
-                {
-                    EPSWebViewFragment webViewFragment = (EPSWebViewFragment)fragment;
+                if (fragment instanceof EPSWebViewFragment) {
+                    EPSWebViewFragment webViewFragment = (EPSWebViewFragment) fragment;
                     webViewFragment.getWebView().reload();
                 }
                 return true;
@@ -64,30 +68,24 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        startAppAd.onResume();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);
     }
 
     @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof EPSWebViewFragment) {
-            EPSWebViewFragment webViewFragment = (EPSWebViewFragment)fragment;
-            if(webViewFragment.canGoBack()){
+            EPSWebViewFragment webViewFragment = (EPSWebViewFragment) fragment;
+            if (webViewFragment.canGoBack()) {
                 webViewFragment.goBack();
-            }
-            else {
-                startAppAd.onBackPressed();
+            } else {
                 super.onBackPressed();
             }
-        }
-        else {
-            startAppAd.onBackPressed();
+        } else {
             super.onBackPressed();
         }
     }
@@ -95,12 +93,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onPause() {
         super.onPause();
-        startAppAd.onPause();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);
     }
 }

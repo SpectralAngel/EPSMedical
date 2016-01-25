@@ -9,15 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.*;
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class EPSWebViewFragment extends Fragment {
 
-    @InjectView(R.id.webView)
+    @Bind(R.id.webView)
     WebView webView;
     Boolean isWebViewAvailable;
     private ValueCallback<Uri> mUploadMessage;
@@ -33,11 +33,11 @@ public class EPSWebViewFragment extends Fragment {
             webView.destroy();
         }
         View rootView = inflater.inflate(R.layout.web_fragment, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new EPSWebViewClient());
-        webView.loadUrl("http://hospinet.epsmedica.com");
+        webView.loadUrl("http://hospinet.epsmedical.com");
         webView.setWebChromeClient(new WebChromeClient() {
             //The undocumented magic method override
             //Eclipse will swear at you if you try to put @Override here
@@ -117,6 +117,7 @@ public class EPSWebViewFragment extends Fragment {
             webView = null;
         }
         super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     public boolean canGoBack() {

@@ -10,7 +10,7 @@ import android.webkit.WebViewClient;
 public class EPSWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (Uri.parse(url).getHost().equals("hospinet.epsmedica.com")) {
+        if (Uri.parse(url).getHost().equals("hospinet.epsmedical.com")) {
             // This is my web site, so do not override; let my WebView load the page
             return false;
         }
