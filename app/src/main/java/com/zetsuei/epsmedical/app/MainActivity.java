@@ -9,10 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class MainActivity extends AppCompatActivity {
     EPSWebViewFragment webViewFragment;
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -24,12 +27,18 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, webViewFragment)
                     .commit();
         }
+        EPSApplication application = (EPSApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
+        mTracker.setScreenName("Main");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("BF95FAC47662E2AE0380508754BDCEEA")
                 .build();
         mAdView.loadAd(adRequest);
+
     }
 
     @Override
