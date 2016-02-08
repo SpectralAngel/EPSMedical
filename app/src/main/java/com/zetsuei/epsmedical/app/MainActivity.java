@@ -15,7 +15,7 @@ import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends AppCompatActivity {
     EPSWebViewFragment webViewFragment;
-    private Tracker mTracker;
+    Tracker mTracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         mTracker.setScreenName("Main");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        mTracker.enableAdvertisingIdCollection(true);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("BF95FAC47662E2AE0380508754BDCEEA")
                 .build();
         mAdView.loadAd(adRequest);
-
     }
 
     @Override

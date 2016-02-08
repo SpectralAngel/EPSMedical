@@ -1,5 +1,6 @@
 package com.zetsuei.epsmedical.app;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,6 +27,7 @@ public class EPSWebViewFragment extends Fragment {
     public EPSWebViewFragment() {
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,44 +38,9 @@ public class EPSWebViewFragment extends Fragment {
         ButterKnife.bind(this, rootView);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setUserAgentString("EPS Medical App");
         webView.setWebViewClient(new EPSWebViewClient());
         webView.loadUrl("http://hospinet.epsmedical.com");
-        webView.setWebChromeClient(new WebChromeClient() {
-            //The undocumented magic method override
-            //Eclipse will swear at you if you try to put @Override here
-            // For Android 3.0+
-            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-
-                mUploadMessage = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("image/*");
-                EPSWebViewFragment.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), FILECHOOSER_RESULTCODE);
-
-            }
-
-            // For Android 3.0+
-            public void openFileChooser(ValueCallback uploadMsg, String acceptType) {
-                mUploadMessage = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("*/*");
-                EPSWebViewFragment.this.startActivityForResult(
-                        Intent.createChooser(i, "File Browser"),
-                        FILECHOOSER_RESULTCODE);
-            }
-
-            //For Android 4.1
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                mUploadMessage = uploadMsg;
-                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.setType("image/*");
-                EPSWebViewFragment.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), EPSWebViewFragment.FILECHOOSER_RESULTCODE);
-
-            }
-
-        });
 
         CookieManager.getInstance().setAcceptCookie(true);
         return rootView;

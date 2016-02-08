@@ -5,7 +5,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 /**
- * Created by Carlos on 4/14/2014.
+ * Adds the tracking code to the analytics account
  */
 public class EPSApplication extends Application {
     private Tracker mTracker;
